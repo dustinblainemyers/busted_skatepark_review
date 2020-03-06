@@ -1,5 +1,5 @@
 const express = require('express'),
-  bcrpt = require('bcryptjs'),
+  bcrypt = require('bcryptjs'),
   UserModel = require('../models/users'),
   router = express.Router();
 
@@ -44,7 +44,7 @@ router.post('/signup', function(req, res, next) {
   const hash = bcrypt.hashSync(password, salt);
 
   const user = new UserModel(null, first_name, last_name, email, hash);
-  use.addUser();
+  user.addUser();
   res.sendStatus(200);
 });
 

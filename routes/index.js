@@ -1,5 +1,6 @@
 const express = require('express'),
   router = express.Router();
+  const ParksModel = require('../models/parks');
 
 /* GET home page. */
 router.get('/', async (req, res, next) => {

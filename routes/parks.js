@@ -1,6 +1,6 @@
-const express = require('express'),
-  router = express.Router(),
-  ParksModel = require('../models/parks');
+const express = require('express')
+  const router = express.Router()
+  const ParksModel = require('../models/parks');
 
 router.get('/', async (req, res, next) => {
   const parkData = await ParksModel.getAll();
@@ -11,7 +11,7 @@ router.get('/', async (req, res, next) => {
       parkData: parkData
     },
     partials: {
-      partial: 'partial'
+      partial: 'partial-index'
     }
   });
 });
@@ -19,7 +19,10 @@ router.get('/', async (req, res, next) => {
 router.get('/:park_id?', async (req, res, next) => {
   const parkId = req.params.park_id;
   const parkData = await ParksModel.getById(parkId);
+  console.log("parkData", parkData)
+  
   const reviewData = await ParksModel.getReviewsById(parkId);
+  console.log("reviewData",reviewData)
 
   res.render('template', {
     locals: {
